@@ -2,14 +2,16 @@
   "name": "bundler-webpack",
   "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^6.5.1",
+    "style-loader": "^3.3.1",
     "webpack": "^5.65.0"
   },
   "dependencies": {
