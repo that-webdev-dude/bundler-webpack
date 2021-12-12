@@ -1,38 +1,23 @@
-<<<<<<< HEAD
-// import _ from 'lodash';
-import { cube } from './math.js';
-=======
-import './styles/style.css';
+import './styles/style.scss';
 import Pic from './images/web-dev-dude.jpg';
 import print from './modules/print';
-import common from './modules/common';
 import _ from 'lodash';
->>>>>>> v1.0.1_production
 
-console.log("I'm the main!");
-console.log(cube(5));
+function component() {
+  const element = document.createElement('div');
+  element.textContent = 'Hello Webpack';
+  element.classList.add('hello');
 
-// import './styles/style.scss';
-// import Pic from './images/web-dev-dude.jpg';
-// import print from './modules/print';
-// import common from './modules/common';
-// import _ from 'lodash';
+  const myPic = new Image();
+  myPic.src = Pic;
+  element.appendChild(myPic);
 
-// function component() {
-//   const element = document.createElement('div');
-//   element.textContent = 'Hello Webpack';
-//   element.classList.add('hello');
+  const btn = document.createElement('button');
+  btn.textContent = 'click me!';
+  btn.onclick = print;
+  element.appendChild(btn);
 
-//   const myPic = new Image();
-//   myPic.src = Pic;
-//   element.appendChild(myPic);
+  return element;
+}
 
-//   const btn = document.createElement('button');
-//   btn.textContent = 'click me!';
-//   btn.onclick = print;
-//   element.appendChild(btn);
-
-//   return element;
-// }
-
-// document.body.appendChild(component());
+document.body.appendChild(component());
