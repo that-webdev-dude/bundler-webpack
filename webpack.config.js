@@ -1,38 +1,54 @@
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
-const isProductionMode = process.env.NODE.ENV === 'production';
-
+// TODO
+// sort out the multi page static website case
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+  entry: {
+    index: './src/index.js',
+    print: './src/print.js',
   },
   plugins: [
-    new MiniCSSExtractPlugin({
-      filename: isProductionMode ? '[name].[contenthash].css' : '[name].css',
+    new HtmlWebpackPlugin({
+      title: 'Output Management',
     }),
   ],
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+  },
   module: {
     rules: [
       /**
-       * styles
+       * CSS styles
        */
       {
         test: /\.css$/i,
         use: [
-          isProductionMode
-            ? MiniCSSExtractPlugin.loader
-            : { loader: 'style-loader' },
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'postcss-loader' },
+        ],
+      },
+
+      /**
+       * SASS styles
+       */
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'postcss-loader' },
+          { loader: 'resolve-url-loader' },
           {
-            loader: 'css-loader',
+            loader: 'sass-loader',
             options: {
-              modules: true,
-              importLoaders: 1,
+              sourceMap: true,
+              implementation: require('sass'),
             },
           },
-          { loader: 'postcss-loader' },
         ],
       },
 

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Press Start 2P';
-  src: url('./PressStart2P-Regular.ttf') format('truetype');
+  src: url('../fonts/PressStart2P-Regular.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
@@ -8,5 +8,5 @@
 .hello {
   color: red;
   font-family: 'Press Start 2P';
-  background: url('./web-dev-dude.jpg');
+  background: url('../images/web-dev-dude.jpg');
 }

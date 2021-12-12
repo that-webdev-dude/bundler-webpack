@@ -1,16 +1,20 @@
-import './style.css';
-import Pic from './web-dev-dude.jpg';
+import './styles/style.scss';
+import Pic from './images/web-dev-dude.jpg';
+import print from './print';
 
 function component() {
-  // main div
   const element = document.createElement('div');
   element.textContent = 'Hello Webpack';
   element.classList.add('hello');
 
-  // add image
   const myPic = new Image();
   myPic.src = Pic;
   element.appendChild(myPic);
+
+  const btn = document.createElement('button');
+  btn.textContent = 'check me!';
+  btn.onclick = print;
+  element.appendChild(btn);
 
   return element;
 }
