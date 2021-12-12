@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 // import _ from 'lodash';
 import { cube } from './math.js';
+=======
+import './styles/style.css';
+import Pic from './images/web-dev-dude.jpg';
+import print from './modules/print';
+import common from './modules/common';
+import _ from 'lodash';
+>>>>>>> v1.0.1_production
 
 console.log("I'm the main!");
 console.log(cube(5));
