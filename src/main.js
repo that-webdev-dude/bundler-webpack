@@ -1,4 +1,4 @@
-import './styles/style.scss';
+import './styles/style.css';
 import Pic from './images/web-dev-dude.jpg';
 import print from './modules/print';
 import common from './modules/common';
