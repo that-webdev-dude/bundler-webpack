@@ -12,7 +12,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Development',
+      template: './src/views/index.html',
     }),
   ].concat(
     devMode
