@@ -2,28 +2,40 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 // TODO
-// sort out the multi page static website case
+// 1 - sort out the multi page static website case - a dedicated config file?
 module.exports = {
   mode: 'development',
-  entry: {
-    index: './src/index.js',
-    print: './src/print.js',
-  },
   devtool: 'inline-source-map',
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Development',
-    }),
-  ],
+  devServer: { static: './dist' },
+  entry: { main: './src/main.js' },
+  plugins: [new HtmlWebpackPlugin({ title: 'Development' })],
+  // optimization: { splitChunks: { chunks: 'all' } },
+  // optimization: { runtimeChunk: 'single', splitChunks: { chunks: 'all' } },
+  optimization: {
+    runtimeChunk: 'single',
+    moduleIds: 'deterministic',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
   output: {
-    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash].js',
     clean: true,
   },
+
   module: {
     rules: [
       /**
+       * ------------------------------
        * CSS styles
+       * ------------------------------
        */
       {
         test: /\.css$/i,
@@ -35,7 +47,9 @@ module.exports = {
       },
 
       /**
+       * ------------------------------
        * SASS styles
+       * ------------------------------
        */
       {
         test: /\.s[ac]ss$/i,
@@ -55,7 +69,9 @@ module.exports = {
       },
 
       /**
+       * ------------------------------
        * images
+       * ------------------------------
        */
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -63,7 +79,9 @@ module.exports = {
       },
 
       /**
+       * ------------------------------
        * fonts
+       * ------------------------------
        */
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,

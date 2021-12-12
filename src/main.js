@@ -1,6 +1,8 @@
 import './styles/style.scss';
 import Pic from './images/web-dev-dude.jpg';
-import print from './print';
+import print from './modules/print';
+import common from './modules/common';
+import _ from 'lodash';
 
 function component() {
   const element = document.createElement('div');
@@ -12,7 +14,7 @@ function component() {
   element.appendChild(myPic);
 
   const btn = document.createElement('button');
-  btn.textContent = 'check me!';
+  btn.textContent = 'click me!';
   btn.onclick = print;
   element.appendChild(btn);
 
