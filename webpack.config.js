@@ -1,19 +1,23 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
-// TODO
-// 1 - sort out the multi page static website case - a dedicated config file?
+// TODO 1
+// sort out the multi page static website case -
+// a dedicated config file?
+
 module.exports = {
-  mode: 'development',
+  // mode: 'development',
+  mode: 'production',
   devtool: 'inline-source-map',
   devServer: { static: './dist' },
+
   entry: { main: './src/main.js' },
   plugins: [new HtmlWebpackPlugin({ title: 'Development' })],
-  // optimization: { splitChunks: { chunks: 'all' } },
-  // optimization: { runtimeChunk: 'single', splitChunks: { chunks: 'all' } },
   optimization: {
     runtimeChunk: 'single',
+    usedExports: true,
     moduleIds: 'deterministic',
+    // splitChunks: { chunks: 'all' }
     splitChunks: {
       cacheGroups: {
         vendor: {
