@@ -5,6 +5,7 @@ module.exports = merge(common, {
   mode: 'production',
   optimization: {
     runtimeChunk: 'single',
+    splitChunks: { chunks: 'all' },
     // moduleIds: 'deterministic',
     splitChunks: {
       cacheGroups: {
