@@ -20,6 +20,7 @@ module.exports = {
       : [
           new MiniCssExtractPlugin({
             filename: devMode ? '[name].css' : '[name].[contenthash].css',
+            inject: 'body',
           }),
         ]
   ),
