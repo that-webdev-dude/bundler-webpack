@@ -1,8 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const devMode = process.env.NODE_ENV !== 'production';
-const devMode = false;
+const devMode = process.env.NODE_ENV !== 'production';
 const { pages } = require('./project.config');
 
 module.exports = {
