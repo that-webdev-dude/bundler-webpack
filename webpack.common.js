@@ -1,7 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const devMode = process.env.NODE_ENV !== 'production';
+// const devMode = process.env.NODE_ENV !== 'production';
+const devMode = false;
+const { pages } = require('./project.config');
 
 module.exports = {
   entry: { main: './src/main.js' },
@@ -10,20 +12,19 @@ module.exports = {
     filename: devMode ? '[name].js' : '[name].[contenthash].js',
     clean: true,
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/views/index.html',
-    }),
-  ].concat(
-    devMode
-      ? []
-      : [
-          new MiniCssExtractPlugin({
-            filename: devMode ? '[name].css' : '[name].[contenthash].css',
-            inject: 'body',
-          }),
-        ]
-  ),
+  plugins: pages
+    .map((page) => {
+      return new HtmlWebpackPlugin({ ...page });
+    })
+    .concat(
+      devMode
+        ? []
+        : [
+            new MiniCssExtractPlugin({
+              filename: devMode ? '[name].css' : '[name].[contenthash].css',
+            }),
+          ]
+    ),
   module: {
     rules: [
       {
