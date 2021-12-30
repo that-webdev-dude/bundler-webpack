@@ -36,7 +36,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        // include: [path.resolve(__dirname, 'src')],
+        include: [path.resolve(__dirname, 'src')],
         exclude: /node_modules/,
       },
 
@@ -56,14 +56,6 @@ module.exports = {
           },
         ],
       },
-
-      // {
-      //   test: /\.(png|jpe?g|gif|jp2|webp)$/,
-      //   loader: 'file-loader',
-      //   options: {
-      //     name: 'images/[name].[ext]'
-      //   }
-      // },
 
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
