@@ -57,6 +57,14 @@ module.exports = {
         ],
       },
 
+      // {
+      //   test: /\.(png|jpe?g|gif|jp2|webp)$/,
+      //   loader: 'file-loader',
+      //   options: {
+      //     name: 'images/[name].[ext]'
+      //   }
+      // },
+
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
