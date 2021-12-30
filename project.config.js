@@ -1,15 +1,12 @@
 module.exports = {
-  name: 'myProject',
+  name: '--project-name--',
   pages: [
+    // if making a multipage
+    // static site, add your pages here
     {
       title: 'index',
       filename: 'index.html',
       template: './src/views/index.html',
-    },
-    {
-      title: 'about',
-      filename: 'about.html',
-      template: './src/views/about.html',
     },
   ],
 };
